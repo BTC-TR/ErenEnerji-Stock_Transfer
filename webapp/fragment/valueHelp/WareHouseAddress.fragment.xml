@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="_IDGenSelectDialog1" title="{i18n>WareHouseAddress}" class="sapUiPopupWithPadding" items="{common_service>/LgplaSHSet}" search="onSearchHlgort"
+		confirm="onCloseHlgort" cancel="onCloseHlgort">
+		<StandardListItem  title="{common_service>Lgpla}" />
+	</SelectDialog>
+</core:FragmentDefinition>

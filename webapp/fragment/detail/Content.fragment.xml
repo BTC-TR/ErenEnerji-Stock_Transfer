@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table  mode="MultiSelect"  id="idDetailTable" width="auto" items="{viewModel>/SnsList}" class="sapUiResponsiveMargin" sticky="ColumnHeaders"
+		selectionChange="onPressSnsDetail" >
+		<headerToolbar>
+			<OverflowToolbar id="_IDGenOverflowToolbar123">
+				<Text class="labelColor" text="{i18n>Ebeln}{viewModel>/SelectedObject/SnsNo}"/>
+			
+				<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+				<!-- <Button id="idBtnDelete" text="{i18n>Delete}" press="onPressDeleteItem" icon="sap-icon://delete" iconFirst="true" tooltip="{i18n>Delete}"
+					visible="true"/> -->
+				<!-- <SearchField id="_IDGenSearchField1" liveChange="onSearch" width="50%"/> -->
+				<!-- <Button id="_IDGenButton1" tooltip="Sort" icon="sap-icon://sort" press="handleSortButtonPressed"/> -->
+				<!-- <Button id="_IDGenButton3" tooltip="Group" icon="sap-icon://group-2" press="handleGroupButtonPressed"/> -->
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns >
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text id="_IDGenText3345" text="{i18n>Ebelp}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text id="_IDGenText3" text="{i18n>Matnr}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text id="_IDGenText5" text="{i18n>Maktx}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text id="_IDGenText54" text="{i18n>SipMik}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text id="_IDGenText10" text="{i18n>TopMik}" hAlign="Center" minScreenWidth="Tablet" demandPopin="true"/>
+			</Column>
+			<Column id="_IDGenColumn4" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text id="_IDGenText6" text="{i18n>Fark}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press="onPressItem">
+				<cells>
+					<Text id="_IDGenText9235" text="{viewModel>Ebelp}"/>				
+					<Text id="_IDGenText235" text="{viewModel>Matnr}"/>
+					<Text id="_IDGenText925" text="{viewModel>Maktx}"/>
+					<Text id="_IDGenText95" text="{viewModel>SipMiktar}"/>
+					<Text id="_IDGenText75" text="{viewModel>TopMiktar}"/>
+					<Text id="_IDGenText92795" text="{viewModel>FarkMiktar}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

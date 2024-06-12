@@ -1,0 +1,15 @@
+<mvc:View xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap"
+	controllerName="com.eren.stocktrans.controller.Main">
+	<ObjectPageLayout id="_IDGenObjectPageLayout1" showFooter="true" showHeaderContent="true" toggleHeaderOnTitleClick="true">
+	
+		<sections>
+			<ObjectPageSection id="_IDGenObjectPageSection1" showTitle="false">
+				<subSections>
+					<ObjectPageSubSection id="_IDGenObjectPageSubSection1">
+						<core:Fragment type="XML" fragmentName="com.eren.stocktrans.fragment.main.Content"/>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table selectionChange="onPressItem"   mode="SingleSelectMaster" id="idTable" width="auto" items="{/ListSet}">
+		<columns>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text text="{i18n>SnsNo}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text text="{i18n>DepoAdi}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text text="{i18n>SevkTarihi}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text text="{i18n>Durum}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectNumber state="Error" number="{SnsNo}"/>
+					<ObjectNumber state="Information" number="{DepoAdi}"/>
+					<ObjectNumber state="Success" number="{SevkTarihi}"/>
+					<ObjectNumber state="Warning" number="{Durum}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>
