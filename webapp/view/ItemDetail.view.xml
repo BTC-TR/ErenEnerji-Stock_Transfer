@@ -15,4 +15,4 @@
 			<core:Fragment type="XML" fragmentName="com.eren.stocktrans.fragment.ItemDetail.Footer"/>
 		</footer>
 	</ObjectPageLayout>
-</mvc:View>""
+</mvc:View>

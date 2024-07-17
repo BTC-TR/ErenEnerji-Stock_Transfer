@@ -1,173 +1,173 @@
 {
-  "_version": "1.48.0",
-  "sap.app": {
-    "id": "com.eren.stocktrans",
-    "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "applicationVersion": {
-      "version": "0.0.1"
-    },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:basic",
-      "version": "1.13.4",
-      "toolsId": "ff983175-513e-4fdd-b4a8-fdf2f09c1e79"
-    },
-    "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata/sap/ZEWM_STOCK_TRANSFER_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "ZEWM_COMMONS_SRV": {
-        "uri": "/sap/opu/odata/sap/ZEWM_COMMONS_SRV",
-        "type": "OData",
-        "settings": {
-            "annotations": [],
-            "localUri": "localService/ZEWM_COMMONS_SRV/metadata.xml",
-            "odataVersion": "2.0"
-        }
-    }
-
-    }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
-  "sap.ui5": {
-    "flexEnabled": true,
-    "dependencies": {
-      "minUI5Version": "1.108.7",
-      "libs": {
-        "sap.m": {},
-        "sap.ui.core": {},
-        "sap.f": {},
-        "sap.suite.ui.generic.template": {},
-        "sap.ui.comp": {},
-        "sap.ui.generic.app": {},
-        "sap.ui.table": {},
-        "sap.ushell": {}
-      }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
-    "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "com.eren.stocktrans.i18n.i18n"
-        }
-      },
-      "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {}
-      },
-      "viewModel": {
-        "type": "sap.ui.model.json.JSONModel",
-        "settings": {},
-        "uri": "./model/viewModel.json",
-        "preload": true
-    },
-      "common_service": {
-        "dataSource": "ZEWM_COMMONS_SRV",
-        "preload": true,
-        "settings": {
-            "defaultBindingMode": "TwoWay",
-            "defaultCountMode": "Inline",
-            "refreshAfterChange": false,
-            "metadataUrlParams": {
-                "sap-value-list": "none"
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "com.eren.stocktrans",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.13.4",
+            "toolsId": "ff983175-513e-4fdd-b4a8-fdf2f09c1e79"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZEWM_STOCK_TRANSFER_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZEWM_COMMONS_SRV": {
+                "uri": "/sap/opu/odata/sap/ZEWM_COMMONS_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZEWM_COMMONS_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
             }
         }
-    }
     },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
         }
-      ]
     },
-    "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "viewType": "XML",
-        "async": true,
-        "viewPath": "com.eren.stocktrans.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
-      },
-      "routes": [
-        {
-          "name": "RouteMain",
-          "pattern": ":?query:",
-          "target": [
-            "TargetMain"
-          ]
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.126.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {},
+                "sap.uxap":{}
+            }
         },
-        {
-          "pattern": "Detail/{SNS}",
-          "name": "detail",
-          "target": [
-              "detail"
-          ]
-      },
-      {
-        "pattern": "ItemDetail/{SNS},{Kalem}",
-        "name": "itemDetail",
-        "target": [
-            "itemDetail"
-        ]
-    }
-      ],
-      "targets": {
-        "TargetMain": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "Main",
-          "viewName": "Main"
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
         },
-        "detail": {
-          "viewName": "Detail",
-          "viewId": "detail",
-          "viewLevel": 2
-      },
-      "itemDetail": {
-        "viewName": "ItemDetail",
-        "viewId": "itemDetail",
-        "viewLevel": 3
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.eren.stocktrans.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "viewModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "settings": {},
+                "uri": "./model/viewModel.json",
+                "preload": true
+            },
+            "common_service": {
+                "dataSource": "ZEWM_COMMONS_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.eren.stocktrans.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMain",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetMain"
+                    ]
+                },
+                {
+                    "pattern": "Detail/{SNS}",
+                    "name": "detail",
+                    "target": [
+                        "detail"
+                    ]
+                },
+                {
+                    "pattern": "ItemDetail/{SNS},{Kalem}",
+                    "name": "itemDetail",
+                    "target": [
+                        "itemDetail"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetMain": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Main",
+                    "viewName": "Main"
+                },
+                "detail": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 2
+                },
+                "itemDetail": {
+                    "viewName": "ItemDetail",
+                    "viewId": "itemDetail",
+                    "viewLevel": 3
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.eren.stocktrans.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
     }
-      }
-    },
-    "rootView": {
-      "viewName": "com.eren.stocktrans.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "App"
-    }
-  }
 }

@@ -260,6 +260,7 @@ sap.ui.define([
             let parts = value.split("|");
             let matnr = "";
             let charg = "";
+            let oSnsNo = viewModel.getProperty("/SelectedObject/SnsNo");
             if (parts.length === 2) {
                 matnr = parts[0];
             }
@@ -273,7 +274,7 @@ sap.ui.define([
             }
             viewModel.setProperty("/Charg", charg);
             let path = "/BarcodeSet";
-            let parameters = { IvMatnr: matnr, IvCharg: charg, IvReslo: reslo };
+            let parameters = { IvMatnr: matnr, IvCharg: charg, IvReslo: reslo, IvEbeln: oSnsNo};
             let model = this.getModel();
 
             let requestPath = model.createKey(path, parameters);
