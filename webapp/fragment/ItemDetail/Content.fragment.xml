@@ -28,11 +28,11 @@
 				<Text id="_IDGenText54" text="{i18n>Charg}"/>
 			</Column>
 			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-				<Text id="_IDGenText10" text="{i18n>Quantity}" hAlign="Center" minScreenWidth="Tablet" demandPopin="true"/>
+				<Text id="_IDGenText10" text="{i18n>Quantity}" minScreenWidth="Tablet" demandPopin="true"/>
 			</Column>
-			<Column id="_IDGenColumn4" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+			<!-- <Column id="_IDGenColumn4" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
 				<Text id="_IDGenText6" text="{i18n>Fark}"/>
-			</Column>
+			</Column> -->
 		</columns>
 		<items>
 			<ColumnListItem id="_IDGenColumnListItem3" >
@@ -41,7 +41,7 @@
 					<Text id="_IDGenText222135" text="{viewModel>Matnr}"/>
 					<Text id="_IDGenText922215" text="{viewModel>Maktx}"/>
 					<Text id="_IDGenText95211" text="{viewModel>Charg}"/>
-					<ObjectNumber
+					 <ObjectNumber
 						id="_IDGenObjectNumber4231"
 						number="{
 							path: 'viewModel>Quan',
@@ -51,7 +51,7 @@
 								maxFractionDigits: 2
 							}
 						}"							
-					/>		
+					/>		 
 				</cells>
 			</ColumnListItem>
 		</items>

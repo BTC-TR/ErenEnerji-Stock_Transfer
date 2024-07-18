@@ -47,7 +47,7 @@ sap.ui.define([
         onSearchHlgort: function (event) {
             let value = event.getParameter("value");
             let filter = new Filter({
-                filters: [new Filter("Lgpla", FilterOperator.Contains, value)],
+                filters: [new Filter("Lgpla", FilterOperator.Contains, value.toUpperCase())],
                 and: false
             });
             event.getSource().getBinding("items").filter(filter);
@@ -160,6 +160,7 @@ sap.ui.define([
                 oViewModel.setProperty("/Charg", "");
             };
             let finalizeCallback = () => {
+                this._SNSDetail();
                 oViewModel.setProperty("/busy", false);
                 oViewModel.refresh(true);
             };
@@ -169,6 +170,8 @@ sap.ui.define([
             let viewModel = this.getModel("viewModel");
             sap.ui.getCore().getMessageManager().removeAllMessages();
             viewModel.setProperty("/Hlgort", "");      
+            viewModel.setProperty("/valueStateHlgort","None");
+            viewModel.setProperty("/Barcode", "");
             viewModel.setProperty("/Klgort", "");
             viewModel.setProperty("/Matnr", "");
             viewModel.setProperty("/Maktx", "");        
@@ -302,10 +305,15 @@ sap.ui.define([
             });
         },
         _SNSDetail: async function () {
+            
             let oViewModel = this.getModel("viewModel"),
-                oSns = oViewModel.getProperty("/SelectedObject/SnsNo"),
+                oSns = oViewModel.getProperty("/SelectedObject/SnsNo");
 
-                fnSuccess = (oData) => {
+                if(oSns === undefined){
+                    return this.getRouter().navTo("RouteMain", {});
+                }
+
+                let fnSuccess = (oData) => {
                     oViewModel.setProperty("/SnsList", oData.results);
                 },
                 fnError = (err) => { },
