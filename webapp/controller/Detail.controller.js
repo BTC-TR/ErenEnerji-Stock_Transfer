@@ -60,6 +60,7 @@ sap.ui.define([
                 input.setValue(selectedItem.getTitle());
                 viewModel.setProperty("/GenericHlgort", selectedItem.getTitle());
                 viewModel.setProperty("/Hlgort", selectedItem.getTitle());
+                viewModel.setProperty("/valueStateHlgort", "Success");
             }
             event.getSource().getBinding("items").filter([]);
         },
