@@ -20,7 +20,9 @@
                 "uri": "/sap/opu/odata/sap/ZEWM_STOCK_TRANSFER_SRV/",
                 "type": "OData",
                 "settings": {
-                    "annotations": [],
+                    "annotations": [
+                        "annotation0"
+                    ],
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
                 }
@@ -32,6 +34,13 @@
                     "annotations": [],
                     "localUri": "localService/ZEWM_COMMONS_SRV/metadata.xml",
                     "odataVersion": "2.0"
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation0.xml",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
                 }
             }
         }
@@ -65,7 +74,7 @@
                 "sap.ui.generic.app": {},
                 "sap.ui.table": {},
                 "sap.ushell": {},
-                "sap.uxap":{}
+                "sap.uxap": {}
             }
         },
         "contentDensities": {

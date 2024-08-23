@@ -106,15 +106,17 @@ sap.ui.define([
                 oEbelp = oArgs.Kalem,
                 oViewModel = this.getModel("viewModel"),
                 fnSuccess = (oData) => {
-                    let aData = [];
-                    if (oData.Type === "E") {
-                        MessageBox.error(oData.Message);
-                        oViewModel.setProperty("/ItemList", aData);
-                    }
-                    else {
-                        aData.push(oData)
-                        oViewModel.setProperty("/ItemList", aData);
-                    }
+
+                    oViewModel.setProperty("/ItemList", oData.results);
+                    // let aData = [];
+                    // if (oData.Type === "E") {
+                    //     MessageBox.error(oData.Message);
+                    //     oViewModel.setProperty("/ItemList", aData);
+                    // }
+                    // else {
+                    //     aData.push(oData)
+                    //     oViewModel.setProperty("/ItemList", aData);
+                    // }
                 },
                 fnError = (err) => {
                     sap.ui.core.BusyIndicator.hide();
@@ -129,17 +131,33 @@ sap.ui.define([
         },
         _getDetail: async function (oEbeln, oEbelp) {
             let oViewModel = this.getModel("viewModel"),
-                oModel = this.getModel();
+                oModel = this.getModel(),
+
+                sPath = "/ItemDetailSet",
+                aFilters = [];
+            aFilters.push(
+                new sap.ui.model.Filter(
+                    "IvEbeln",
+                    sap.ui.model.FilterOperator.EQ,
+                    oEbeln
+                )
+            );
+            aFilters.push(
+                new sap.ui.model.Filter(
+                    "IvEbelp",
+                    sap.ui.model.FilterOperator.EQ,
+                    oEbelp
+                )
+            );
+
             sap.ui.core.BusyIndicator.show(0);
             return new Promise((fnResolve, fnReject) => {
                 let oParams = {
+                    filters: aFilters,
                     success: fnResolve,
                     error: fnReject,
-                },
-                    sPath = oModel.createKey("/ItemDetailSet", {
-                        IvEbeln: oEbeln,
-                        IvEbelp: oEbelp
-                    });
+                };
+
                 oModel.read(sPath, oParams);
             });
         },
@@ -148,12 +166,8 @@ sap.ui.define([
             let oResourceBundle = this.getResourceBundle(),
                 oViewModel = this.getModel("viewModel");
             let oEntry = this.getView().byId("idItemDetailTable").getSelectedItem().getBindingContext("viewModel").getObject();
-            let oSnsNo = oEntry.IvEbeln,
-                oEbelp = oEntry.IvEbelp,
-                oMaterialType = oEntry.Matnr,
-                oCharg = oEntry.Charg,
-                oWarehouse = oEntry.Lgpla,
-                oLgnum = oViewModel.getProperty("/Lgnum"),
+            let oGuid = oEntry.Guid,
+               
                 fnSuccess = (oData) => {
                     sap.ui.core.BusyIndicator.hide();
                     if (oData.Type === "E") {
@@ -169,9 +183,9 @@ sap.ui.define([
                 fnFinally = () => {
                     oViewModel.setProperty("/busy", false);
                 };
-            this._deleteItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, oLgnum).then(fnSuccess).catch(fnError).finally(fnFinally);
+            this._deleteItem(oGuid).then(fnSuccess).catch(fnError).finally(fnFinally);
         },
-        _deleteItem: async function (oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, oLgnum) {
+        _deleteItem: async function (oGuid) {
             let oViewModel = this.getModel("viewModel"),
                 oModel = this.getModel();
             sap.ui.core.BusyIndicator.show(0);
@@ -181,12 +195,7 @@ sap.ui.define([
                     error: fnReject,
                 },
                     sPath = oModel.createKey("/SnsDeleteSet", {
-                        IvCharg: oCharg,
-                        IvEbeln: oSnsNo,
-                        IvEbelp: oEbelp,
-                        IvLgpla: oWarehouse,
-                        IvLgnum: oLgnum,
-                        IvMatnr: oMaterialType
+                        IvGuid: oGuid,
                     });
                 oModel.read(sPath, oParams);
             });
