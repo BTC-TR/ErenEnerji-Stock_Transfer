@@ -4,13 +4,10 @@
 		<Label width="auto" id="_IDGenLabel4" text="{i18n>WareHouseAddress}"/>
 		<Input id="_IDGenInput1" showValueHelp="true" valueHelpRequest="onValueHelpHlgort" maxLength="18" placeholder="{i18n>WareHouseAddress}"
 			change="onLgplaCheck" submit="onLgplaCheck" value="{viewModel>/Hlgort}" valueState="{viewModel>/valueStateHlgort}"
-			valueStateText="{viewModel>/valueStateHlgortT}" showSuggestion="true" suggestionItems="{common_service>/LgplaSHSet}">
+			valueStateText="{viewModel>/valueStateHlgortT}">
 			<layoutData>
 				<l:GridData span="XL8 L8 M8 S12"/>
 			</layoutData>
-			<suggestionItems>
-				<core:Item text="{common_service>Lgpla}"/>
-			</suggestionItems>
 		</Input>
 		<Label width="auto" id="_IDGenLabel3" text="{i18n>Barcode}"/>
 		<Input id="_IDGenInput3" value="{viewModel>/Barcode}" change="onChangeBarcode" enabled="{= ${viewModel>/valueStateHlgort} === 'Success' ? true : false }">

@@ -20,6 +20,6 @@ builder:
           name: ZEWM_STOCK_TRNS
           description: EWM Stock Transfer
           package: ZFIORI_EWM
-          transport: DS4K900664
+          transport: DS4K901402
         exclude:
           - /test/

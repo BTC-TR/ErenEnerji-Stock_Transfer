@@ -36,6 +36,7 @@ sap.ui.define([
             this.getRouter().getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
         },
         onValueHelpHlgort: function (event) {
+            
             let value = event.getSource().getValue();
             this.inputId = event.getSource().getId();
             if (!this._valueHelpKlgort) {
@@ -44,6 +45,8 @@ sap.ui.define([
             }
             this._valueHelpKlgort.open(value);
         },
+
+
         onSearchHlgort: function (event) {
             let value = event.getParameter("value");
             let filter = new Filter({
