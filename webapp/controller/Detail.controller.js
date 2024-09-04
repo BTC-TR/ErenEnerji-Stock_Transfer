@@ -64,6 +64,10 @@ sap.ui.define([
                 viewModel.setProperty("/GenericHlgort", selectedItem.getTitle());
                 viewModel.setProperty("/Hlgort", selectedItem.getTitle());
                 viewModel.setProperty("/valueStateHlgort", "Success");
+               // this.getView().byId("_IDGenInput3").focus();
+                jQuery.sap.delayedCall(100, this, function () {
+                    this.getView().byId("_IDGenInput3").focus();
+                });
             }
             event.getSource().getBinding("items").filter([]);
         },
@@ -81,6 +85,10 @@ sap.ui.define([
                     viewModel.setProperty("/Hlgort", "");
                 } else {
                     viewModel.setProperty("/valueStateHlgort", "Success");
+                    jQuery.sap.delayedCall(100, this, function () {
+                        this.getView().byId("_IDGenInput3").focus();
+                    });
+                  //  this.getView().byId("_IDGenInput3").focus();
                 }
             }).catch(error => {
                 // Handle error
@@ -98,6 +106,9 @@ sap.ui.define([
                 } else {
                     viewModel.setProperty("/Matnr", response.Matnr);
                     viewModel.setProperty("/Maktx", response.Maktx);
+                    jQuery.sap.delayedCall(100, this, function () {
+                        this.getView().byId("_IDGenText23").focus();
+                    });
                 }
             };
             let errorCallback = error => {
