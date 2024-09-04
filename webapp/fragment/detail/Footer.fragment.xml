@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
 	<OverflowToolbar id="_IDGenOverflowToolbar1">
-	<Button
+	<Button width="70px"
 			id="_IDGenButton3"
 			type="Emphasized"
 			text="{i18n>stockQuery}"
