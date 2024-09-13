@@ -7,28 +7,34 @@
                 <Key>
                     <PropertyRef Name="SnsNo"/>
                 </Key>
-                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Malzeme" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Charg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ernam" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Yaratan" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Kalem" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Malzeme" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="İleti tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Tanım" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="İleti metni" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SipMiktar" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="SA sprş.miktarı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SnsNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Satınalma blg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="TopMiktar" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="SA sprş.miktarı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="DepoAdi" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="30 karakter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TopMiktar" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="SA sprş.miktarı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FarkMiktar" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="SA sprş.miktarı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SevkTarihi" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Karakter alanı uzunluğu 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Durum" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="20 karakter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Reslo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Çıkış ypl.depo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Reswk" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Teslimat yap.ÜY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reswk" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Teslimat yap.ÜY" sap:creatable="false" sap:updatable="false"/>
             </EntityType>
             <EntityType Name="Barcode" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="IvCharg"/>
+                    <PropertyRef Name="IvReswk"/>
+                    <PropertyRef Name="IvEbeln"/>
                     <PropertyRef Name="IvMatnr"/>
                     <PropertyRef Name="IvReslo"/>
                 </Key>
                 <Property Name="IvCharg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvReswk" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Teslimat yap.ÜY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvEbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Satınalma blg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IvMatnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Malzeme" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IvReslo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Çıkış ypl.depo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Malzeme" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -67,59 +73,93 @@
             </EntityType>
             <EntityType Name="SnsDelete" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="IvCharg"/>
-                    <PropertyRef Name="IvEbeln"/>
-                    <PropertyRef Name="IvEbelp"/>
-                    <PropertyRef Name="IvLgnum"/>
-                    <PropertyRef Name="IvLgpla"/>
-                    <PropertyRef Name="IvMatnr"/>
+                    <PropertyRef Name="IvGuid"/>
                 </Key>
-                <Property Name="IvCharg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="IvEbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Satınalma blg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="IvEbelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Kalem" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="IvLgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Depo numarası" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="IvLgpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Depo adresi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="IvMatnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Malzeme" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="İleti tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="GUID 16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="İleti metni" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="QuantityQuery" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Lgnum"/>
-                    <PropertyRef Name="Lgtyp"/>
                     <PropertyRef Name="Lgpla"/>
+                    <PropertyRef Name="Lgtyp"/>
                 </Key>
-                <Property Name="UiWdatt" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="MG saati" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvMiktar" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Kullanılab.mkt." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Depo numarası" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Depo adresi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgtyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Depo tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aisle" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dp.adresi krdr." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Altme" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Alternatif ÖB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Batchid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Binsc" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Depo adr.alt blm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Brestr" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Tahditli" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Capa" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Kapasite klnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Stok türü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CatText" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Stok türü tnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Charg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Coo" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Menşe ülke/böl." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CooText" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Ülke/bölge" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cwexact" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Dğrl.ölçüldü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cwquan" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Değerleme mkt." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CwquanInt" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Miktar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cwunit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Dğrl.ÖB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Depth" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dp.adresi drnl." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dstgrp" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Kons.grubu" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Entitled" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Klnm.ytkl." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EntitledRole" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Muhatap rolü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EntitledText" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Kullanım yetkilisi tanımı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Flgmove" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Aç.TB dp.grv." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GuidParent" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Üst öğe" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GuidStock" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Stok GUID'i" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GuidStock0" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Stok GUID'i" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Huident" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Taşıma birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HuidentParent" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Üst düzey TB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HuidentTop" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="En üst TB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Idplate" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Stok tanıtıcısı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Inspdocno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Kalite kontrolü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Inspid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Kontrol nesnesi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Insptyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Kontrol tn.tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InsptypText" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Kontrol tü.tnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IvCharg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IvLgpla" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Depo adresi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IvMatnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Malzeme" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IvReswk" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Teslimat yap.ÜY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="İleti tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="İleti metni" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="LocType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Lokasyon tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Depo numarası" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Lgtyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Depo tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Lgber" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Depo alanı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Lgpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Depo adresi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Rsrc" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Kaynak" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="TuNum" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dahili TB no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="TuNumExt" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Nakliye birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Tsp" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Nakliye şirketi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="TspText" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Nakliye şirketi tnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Huident" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Taşıma birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="HuidentParent" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Üst düzey TB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="HuidentTop" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="En üst TB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Ürün" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LocType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Lokasyon tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Logpos" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Mntk.konum" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lptyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Depo adr.tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LvlV" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dp.adresi dzy." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Ürün tanımı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Charg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Cat" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Stok türü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="CatText" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Stok türü tnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Entitled" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Klnm.ytkl." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="EntitledRole" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Muhatap rolü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="EntitledText" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Kullanım yetkilisi tanımı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Ürün" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Ürün" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Tml.ölçü birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="İleti metni" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Outcon" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Adres dzltbr." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Owner" Type="Edm.String" Nullable="false" MaxLength="28" sap:unicode="false" sap:label="Sahip" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="OwnerRole" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Muhatap rolü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="OwnerText" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Sahip tanımı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Psa" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Ürt.tdrk.alanı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qdoccat" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Belge tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QdoccatText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Belge tipi mtn." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qdocid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Belge tn." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qdocno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Stok referansı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qitemno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Stk.ref.kalemi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QitmCancel" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Sprş.klm.azaltıldı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qitmid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Kalem" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quan" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Miktar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quana" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Ambln.miktarAÖB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuanaInt" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Miktar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuanDummy" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="1 uzunluğunda yapay işlev" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuanInt" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Miktar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuanPsDummy" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="1 uzunluğunda yapay işlev" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rsrc" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Kaynak" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Skzsi" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Fzk.env.etkin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Skzua" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Dp.çkrm.blkj." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Skzue" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Depolama blkj." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SnStock" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Seri no.zrnk." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stack" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dp.adr.sütunu" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StkSegLong" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Özel stok bölümü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="StockDoccat" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Tip" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="StockDoccatText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Tür tanımı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="StockDocno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Stk.ref.belgesi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -129,79 +169,33 @@
                 <Property Name="StockUsageText" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Stok.klnm.tnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="StrefDoccat" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Belge tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="StrefDoccatText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Belge tipi mtn." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Coo" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Menşe ülke/böl." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="CooText" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Ülke/bölge" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Idplate" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Stok tanıtıcısı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Qdoccat" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Belge tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="QdoccatText" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Belge tipi mtn." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Qdocno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Stok referansı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Qitemno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Stk.ref.kalemi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Insptyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Kontrol tn.tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="InsptypText" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Kontrol tü.tnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Inspdocno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Kalite kontrolü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="StkSegLong" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Özel stok bölümü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="UnitW" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Ağırlık birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
-                <Property Name="UnitV" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Hacim birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
-                <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Tml.ölçü birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
-                <Property Name="Altme" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Alternatif ÖB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
-                <Property Name="Cwunit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Dğrl.ÖB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
-                <Property Name="Cwexact" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Dğrl.ölçüldü" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Outcon" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Adres dzltbr." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="SnStock" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Seri no.zrnk." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Dstgrp" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Kons.grubu" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Psa" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Ürt.tdrk.alanı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Lptyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Depo adr.tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Aisle" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dp.adresi krdr." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Stack" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dp.adr.sütunu" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="LvlV" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dp.adresi dzy." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Binsc" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Depo adr.alt blm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Depth" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dp.adresi drnl." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Logpos" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Mntk.konum" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="QuanDummy" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="1 uzunluğunda yapay işlev" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Zeugn" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Srtf.no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="QuanPsDummy" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="1 uzunluğunda yapay işlev" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="IvMiktar" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="INT4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Weight" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Yük ağırlığı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Volum" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Yük hacmi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Capa" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Kapasite klnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="QuanInt" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Miktar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Quan" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Miktar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="QuanaInt" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Miktar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Quana" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Ambln.miktarAÖB" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="CwquanInt" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Miktar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Cwquan" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Değerleme mkt." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Wdatu" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="MG tarihi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tsp" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Nakliye şirketi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TspText" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Nakliye şirketi tnm." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuNum" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Dahili TB no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TuNumExt" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Nakliye birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="İleti tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UiWdatt" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="MG saati" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="UiWdatu" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="MG tarihi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UnitV" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Hacim birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="UnitW" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Ağırlık birimi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
                 <Property Name="Vfdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Son kullanım tarihi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Brestr" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Tahditli" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Skzsi" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Fzk.env.etkin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Skzua" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Dp.çkrm.blkj." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Skzue" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Depolama blkj." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Flgmove" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Aç.TB dp.grv." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="QitmCancel" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Sprş.klm.azaltıldı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="GuidParent" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Üst öğe" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="GuidStock" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Stok GUID'i" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Matid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Ürün" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Batchid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Qdocid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Belge tn." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Qitmid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Kalem" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Inspid" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Kontrol nesnesi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="GuidStock0" Type="Edm.Binary" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Stok GUID'i" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Volum" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Yük hacmi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Wdatu" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="MG tarihi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Weight" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Yük ağırlığı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zeugn" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Srtf.no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="ItemDetail" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="IvEbeln"/>
-                    <PropertyRef Name="IvEbelp"/>
+                    <PropertyRef Name="Guid"/>
                 </Key>
                 <Property Name="IvEbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Satınalma blg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IvEbelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Kalem" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="GUID 16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Lgpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Depo adresi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Malzeme" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Tanım" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Charg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Parti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Quan" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Kullanılab.mkt." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="İleti tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="İleti metni" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <ComplexType Name="EsReturn">
                 <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="İleti tipi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>

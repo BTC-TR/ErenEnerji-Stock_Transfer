@@ -34,11 +34,13 @@ server:
             metadataXmlPath: ./webapp/localService/metadata.xml
             mockdataRootPath: ./webapp/localService/data
           - urlPath: /sap/opu/odata/sap/ZEWM_STOCK_TRANSFER_SRV/
+            metadataPath: ./webapp/localService/metadata.xml
+            mockdataPath: ./webapp/localService/mockdata
             generateMockData: true
-            metadataXmlPath: ./webapp/localService/metadata.xml
-            mockdataRootPath: ./webapp/localService/mockdata
           - urlPath: /sap/opu/odata/sap/ZEWM_COMMONS_SRV
-            metadataPath: ./webapp/localService/ZEWM_COMMONS_SRV/metadata.xml
-            mockdataPath: ./webapp/localService/ZEWM_COMMONS_SRV/mockdata
             generateMockData: true
-        annotations: []
+            metadataXmlPath: ./webapp/localService/ZEWM_COMMONS_SRV/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZEWM_COMMONS_SRV/mockdata
+        annotations:
+          - localPath: ./webapp/annotations/annotation0.xml
+            urlPath: annotations/annotation0.xml

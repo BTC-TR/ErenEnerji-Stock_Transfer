@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<VBox id="idVBox">
+		<FacetFilter
+			id="idFacetFilter"
+			type="Simple"
+			showPersonalization="false"
+			liveSearch="false"
+			showReset="true"
+			reset="handleFacetFilterReset"
+			confirm="handleConfirm"
+			lists="{viewModel>/Filters}">
+				<FacetFilterList
+					title="{viewModel>type}"
+					key="{viewModel>key}"
+                    multiSelect="false"
+					items="{path:'viewModel>/Filters/0/values', templateShareable: true}" >
+						<FacetFilterItem
+							text="{viewModel>text}"
+							key="{viewModel>key}"
+							count="{viewModel>data}" />
+				</FacetFilterList>
+		</FacetFilter>
+	
+	</VBox>
+</core:FragmentDefinition>
