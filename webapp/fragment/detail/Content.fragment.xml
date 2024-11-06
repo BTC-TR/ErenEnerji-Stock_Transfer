@@ -121,15 +121,37 @@
                     <Text text="{viewModel>Charg}" />
                     <Text
                         id="_IDGenText95"
-                        text="{viewModel>SipMiktar}"
+                           text= "{ path: 'viewModel>SipMiktar', type: 'sap.ui.model.type.Float',
+                     formatOptions: { 
+                            minFractionDigits: 3,
+                            maxFractionDigits: 3,
+                            groupingEnabled: true,
+                            groupingSeparator: '.',
+                            decimalSeparator: ','
+                            } }" 
                     />
                     <Text
                         id="_IDGenText75"
-                        text="{viewModel>TopMiktar}"
+
+                            text= "{ path: 'viewModel>TopMiktar', type: 'sap.ui.model.type.Float',
+                     formatOptions: { 
+                            minFractionDigits: 3,
+                            maxFractionDigits: 3,
+                            groupingEnabled: true,
+                            groupingSeparator: '.',
+                            decimalSeparator: ','
+                            } }" 
                     />
                     <Text
                         id="_IDGenText92795"
-                        text="{viewModel>FarkMiktar}"
+                                text= "{ path: 'viewModel>FarkMiktar', type: 'sap.ui.model.type.Float',
+                     formatOptions: { 
+                            minFractionDigits: 3,
+                            maxFractionDigits: 3,
+                            groupingEnabled: true,
+                            groupingSeparator: '.',
+                            decimalSeparator: ','
+                            } }" 
                     />
                 </cells>
             </ColumnListItem>

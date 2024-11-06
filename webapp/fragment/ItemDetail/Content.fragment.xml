@@ -43,14 +43,16 @@
 					<Text id="_IDGenText95211" text="{viewModel>Charg}"/>
 					 <ObjectNumber
 						id="_IDGenObjectNumber4231"
-						number="{
-							path: 'viewModel>Quan',
-							type: 'sap.ui.model.type.Float',
-							formatOptions: {
-								minFractionDigits: 2,
-								maxFractionDigits: 2
-							}
-						}"							
+						number=  "{ path: 'viewModel>Quan', type: 'sap.ui.model.type.Float',
+                     formatOptions: { 
+                            minFractionDigits: 3,
+                            maxFractionDigits: 3,
+                            groupingEnabled: true,
+                            groupingSeparator: '.',
+                            decimalSeparator: ','
+                            } }" 
+
+						              						
 					/>		 
 				</cells>
 			</ColumnListItem>

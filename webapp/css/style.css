@@ -8,3 +8,19 @@
     font-weight: bolder !important;
     color: blue !important;
 }
+
+/* Enter your custom styles here */
+
+[data-meins] {
+    position: relative;
+}
+[data-meins]::after {
+    --fontsize: .875rem;
+    content: attr(data-meins);
+    position: absolute;
+    right: 11px;
+    top: calc(50% - calc(var(--fontsize) / 2));
+    font-size: var(--fontsize);
+    font-weight: bold;
+    color: rgb(147 147 147);
+}

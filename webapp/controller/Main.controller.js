@@ -49,7 +49,7 @@ sap.ui.define(["./BaseController",
         },
 
         onRowsUpdated: function (oEvent) {
-            debugger;
+           /// debugger;
 
             let arrayList = []
             oEvent.getSource()?.getItems()?.forEach(oItem => {

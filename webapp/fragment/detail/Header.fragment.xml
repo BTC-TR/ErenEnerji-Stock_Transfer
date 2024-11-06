@@ -1,44 +1,118 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
-	<f:SimpleForm editable="true" id="idHeaderSimpleForm" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanM="4" labelSpanS="12"
-		emptySpanXL="0" columnsXL="1" singleContainerFullSize="false">
-		<Label width="auto" id="_IDGenLabel4" text="{i18n>WareHouseAddress}"/>
-		<Input id="_IDGenInput1" showValueHelp="true" valueHelpRequest="onValueHelpHlgort" maxLength="18" placeholder="{i18n>WareHouseAddress}"
-			change="onLgplaCheck" submit="onLgplaCheck" value="{viewModel>/Hlgort}" valueState="{viewModel>/valueStateHlgort}"
-			valueStateText="{viewModel>/valueStateHlgortT}">
-			<layoutData>
-				<l:GridData span="XL8 L8 M8 S12"/>
-			</layoutData>
-		</Input>
-		<Label width="auto" id="_IDGenLabel3" text="{i18n>Barcode}"/>
-		<Input id="_IDGenInput3" value="{viewModel>/Barcode}" change="onChangeBarcode" enabled="{= ${viewModel>/valueStateHlgort} === 'Success' ? true : false }">
-			<layoutData>
-				<l:GridData span="XL8 L8 M8 S12"/>
-			</layoutData>
-		</Input>
-		<Label width="auto" id="_IDGenLabel11" text="{i18n>Matnr}"/>
-		<Text id="idMatnr" text="{viewModel>/Matnr}">
-			<layoutData>
-				<l:GridData span="XL8 L8 M8 S12"/>
-			</layoutData>
-		</Text>
-		<Label width="auto" id="_IDGenLabel6" text="{i18n>Maktx}"/>
-		<Text id="idMaktx" text="{viewModel>/Maktx}">
-			<layoutData>
-				<l:GridData span="XL8 L8 M8 S12"/>
-			</layoutData>
-		</Text>
-		<Label width="auto" id="_IDGenLabel8" required="{viewModel>/ChargEnabled}" text="{i18n>Charg}"/>
-		<Text  id="_IDGenInput4" text="{viewModel>/Charg}"
-			>
-			<layoutData>
-				<l:GridData span="XL8 L8 M8 S12"/>
-			</layoutData>
-		</Text>
-		<Label width="auto" id="_IDGenLabel9" text="{i18n>Quantity}"/>
-		<Input id="_IDGenText23" value="{viewModel>/Quantity}" change="onChangeQuantity" enabled="{= ${viewModel>/valueStateHlgort} === 'Success' ? true : false }">
-			<layoutData>
-				<l:GridData span="XL8 L8 M8 S12"/>
-			</layoutData>			
-		</Input>
-	</f:SimpleForm>
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+>
+    <f:SimpleForm
+        editable="true"
+        id="idHeaderSimpleForm"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="4"
+        labelSpanM="4"
+        labelSpanS="12"
+        emptySpanXL="0"
+        columnsXL="1"
+        singleContainerFullSize="false"
+    >
+        <Label
+            width="auto"
+            id="_IDGenLabel4"
+            text="{i18n>WareHouseAddress}"
+        />
+        <Input
+            id="_IDGenInput1"
+            showValueHelp="true"
+            valueHelpRequest="onValueHelpHlgort"
+            maxLength="18"
+            placeholder="{i18n>WareHouseAddress}"
+            change="onLgplaCheck"
+            submit="onLgplaCheck"
+            value="{viewModel>/Hlgort}"
+            valueState="{viewModel>/valueStateHlgort}"
+            valueStateText="{viewModel>/valueStateHlgortT}"
+        >
+            <layoutData>
+                <l:GridData span="XL8 L8 M8 S12" />
+            </layoutData>
+        </Input>
+        <Label
+            width="auto"
+            id="_IDGenLabel3"
+            text="{i18n>Barcode}"
+        />
+        <Input
+            id="_IDGenInput3"
+            value="{viewModel>/Barcode}"
+            change="onChangeBarcode"
+            enabled="{= ${viewModel>/valueStateHlgort} === 'Success' ? true : false }"
+        >
+            <layoutData>
+                <l:GridData span="XL8 L8 M8 S12" />
+            </layoutData>
+        </Input>
+        <Label
+            width="auto"
+            id="_IDGenLabel11"
+            text="{i18n>Matnr}"
+        />
+        <Text
+            id="idMatnr"
+            text="{viewModel>/Matnr}"
+        >
+            <layoutData>
+                <l:GridData span="XL8 L8 M8 S12" />
+            </layoutData>
+        </Text>
+        <Label
+            width="auto"
+            id="_IDGenLabel6"
+            text="{i18n>Maktx}"
+        />
+        <Text
+            id="idMaktx"
+            text="{viewModel>/Maktx}"
+        >
+            <layoutData>
+                <l:GridData span="XL8 L8 M8 S12" />
+            </layoutData>
+        </Text>
+        <Label
+            width="auto"
+            id="_IDGenLabel8"
+            required="{viewModel>/ChargEnabled}"
+            text="{i18n>Charg}"
+        />
+        <Text
+            id="_IDGenInput4"
+            text="{viewModel>/Charg}"
+        >
+            <layoutData>
+                <l:GridData span="XL8 L8 M8 S12" />
+            </layoutData>
+        </Text>
+        <Label
+            width="auto"
+            id="_IDGenLabel9"
+            text="{i18n>Quantity}"
+        />
+        <Input
+            id="idQuantity"
+			liveChange="onQuantityLiveChange"
+            value="{ path: 'viewModel>/Quantity', formatter: '.formatter.formatQuantity' }"
+            change="onChangeQuantity"
+            enabled="{= ${viewModel>/valueStateHlgort} === 'Success' ? true : false }"
+        >
+            <layoutData>
+                <l:GridData span="XL8 L8 M8 S12" />
+            </layoutData>
+            <customData>
+                <core:CustomData
+                    key="meins"
+                    writeToDom="true"
+                    value="{viewModel>/Meins}"
+                />
+            </customData>
+        </Input>
+    </f:SimpleForm>
 </core:FragmentDefinition>

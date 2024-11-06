@@ -16,7 +16,7 @@ sap.ui.define([
 ], function (
     BaseController,
     JSONModel,
-    Formatter,
+    formatter,
     Filter,
     FilterOperator,
     MessageBox,
@@ -32,6 +32,7 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("com.eren.stocktrans.controller.Detail", {
+        formatter: formatter,
         onInit: function () {
             this.getRouter().getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
         },
@@ -96,6 +97,30 @@ sap.ui.define([
                 // Finalize
             });
         },
+        onQuantityLiveChange: function(oEvent) {
+            let sValue = oEvent.getParameter("value");
+
+            let oViewModel = this.getView().getModel("viewModel"),
+                sMeins = oViewModel.getProperty("/Meins"),
+                sFilteredValue;
+        
+                
+            if(sMeins === 'ADT' || sMeins === 'PC'){
+                  // Sadece sayıları kabul et (0-9)
+             sFilteredValue = sValue.replace(/[^0-9]/g, "");
+            }
+            else{
+            // Sayı ve yalnızca bir virgül dışında karakterleri temizle, ve sadece 1 tane virgül.
+            sFilteredValue = sValue.replace(/[^0-9,]/g, "");
+            sFilteredValue = sFilteredValue.replace(/(,.*),/g, "$1");
+            }
+                        
+        
+            // Eğer girdi filtrelendi ise, değeri Input alanına geri yaz
+            if (sValue !== sFilteredValue) {
+                oEvent.getSource().setValue(sFilteredValue);
+            }
+        },
         onChangeBarcode: async function (event) {
             let value = event.getSource().getValue();
             let reslo = this.getModel("viewModel").getProperty("/SelectedObject/Reslo");
@@ -106,8 +131,9 @@ sap.ui.define([
                 } else {
                     viewModel.setProperty("/Matnr", response.Matnr);
                     viewModel.setProperty("/Maktx", response.Maktx);
+                    viewModel.setProperty("/Meins", response.Meins);
                     jQuery.sap.delayedCall(100, this, function () {
-                        this.getView().byId("_IDGenText23").focus();
+                        this.getView().byId("idQuantity").focus();
                     });
                 }
             };
@@ -118,6 +144,7 @@ sap.ui.define([
                 viewModel.setProperty("/Matnr", "");
                 viewModel.setProperty("/Maktx", "");
                 viewModel.setProperty("/Quantity", "");
+                this.getView().byId("idQuantity").setValue("");
                 viewModel.setProperty("/Unit", "");
                 viewModel.setProperty("/Charg", "");
             };
@@ -154,7 +181,8 @@ sap.ui.define([
             let oMaterialType = oViewModel.getProperty("/Matnr");
             let oCharg = oViewModel.getProperty("/Charg");
             let oWarehouse = oViewModel.getProperty("/Hlgort");
-            let oQuantity = oViewModel.getProperty("/Quantity");
+            //let oQuantity = oViewModel.getProperty("/Quantity");
+            let oQuantity = this.getView().byId("idQuantity").getValue();
             let oLgnum = oViewModel.getProperty("/Lgnum");
             let successCallback = response => {
                 if (response.Type === "S") {
@@ -171,6 +199,7 @@ sap.ui.define([
                 oViewModel.setProperty("/Matnr", "");
                 oViewModel.setProperty("/Maktx", "");
                 oViewModel.setProperty("/Quantity", "");
+                this.getView().byId("idQuantity").setValue("");
                 oViewModel.setProperty("/Unit", "");
                 oViewModel.setProperty("/Charg", "");
             };
@@ -179,7 +208,8 @@ sap.ui.define([
                 oViewModel.setProperty("/busy", false);
                 oViewModel.refresh(true);
             };
-            await this._addSnsItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, oQuantity, oLgnum).then(successCallback).catch(errorCallback).finally(finalizeCallback);
+            await this._addSnsItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, 
+                formatter.changeNumber(oQuantity), oLgnum).then(successCallback).catch(errorCallback).finally(finalizeCallback);
         },
         onClear: async function () {
             let viewModel = this.getModel("viewModel");
@@ -192,6 +222,7 @@ sap.ui.define([
             viewModel.setProperty("/Maktx", "");        
             viewModel.setProperty("/Charg", "");
             viewModel.setProperty("/Quantity", "");
+            this.getView().byId("idQuantity").setValue("");
             viewModel.setProperty("/StockInfo", "");
             viewModel.setProperty("/Unit", "");
             viewModel.setProperty("/Meins", "");         
