@@ -101,6 +101,7 @@
 			liveChange="onQuantityLiveChange"
             value="{ path: 'viewModel>/Quantity', formatter: '.formatter.formatQuantity' }"
             change="onChangeQuantity"
+            placeholder="{i18n>quantityEnter}"
             enabled="{= ${viewModel>/valueStateHlgort} === 'Success' ? true : false }"
         >
             <layoutData>

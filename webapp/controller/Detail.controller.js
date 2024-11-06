@@ -208,9 +208,13 @@ sap.ui.define([
                 oViewModel.setProperty("/busy", false);
                 oViewModel.refresh(true);
             };
-            await this._addSnsItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, 
+
+            if (oQuantity) {
+                   await this._addSnsItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, 
                 formatter.changeNumber(oQuantity), oLgnum).then(successCallback).catch(errorCallback).finally(finalizeCallback);
-        },
+            }
+            
+              },
         onClear: async function () {
             let viewModel = this.getModel("viewModel");
             sap.ui.getCore().getMessageManager().removeAllMessages();
