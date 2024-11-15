@@ -1,38 +1,119 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<Table updateFinished="onRowsUpdated" selectionChange="onPressItem"   mode="SingleSelectMaster" id="idTable" width="auto" items="{/ListSet}"
-	growing="true" growingThreshold="250" 	
-	>
-		<columns>
-			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-				<Text text="{i18n>SnsNo}"/>
-			</Column>
-			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-				<Text text="{i18n>CikisUY}"/>
-			</Column>
-			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-				<Text text="{i18n>DepoAdi}"/>
-			</Column>
-			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-				<Text text="{i18n>SevkTarihi}"/>
-			</Column>
-			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-				<Text text="{i18n>Ernam}"/>
-			</Column>
-			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-				<Text text="{i18n>Durum}"/>
-			</Column>
-		</columns>
-		<items>
-			<ColumnListItem>
-				<cells>
-					<ObjectNumber state="Error" number="{SnsNo}"/>
-					<ObjectNumber state="Error" number="{Reswk}"/>
-					<ObjectNumber state="Information" number="{DepoAdi}"/>
-					<ObjectNumber state="Success" number="{SevkTarihi}"/>
-					<ObjectNumber state="Information" number="{Ernam}"/>					
-					<ObjectNumber state="Warning" number="{Durum}"/>
-				</cells>
-			</ColumnListItem>
-		</items>
-	</Table>
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Table
+        updateFinished="onRowsUpdated"
+        selectionChange="onPressItem"
+        mode="SingleSelectMaster"
+        id="idTable"
+        width="auto"
+        items="{
+        path: '/ListSet'
+    }"
+        growing="true"
+        growingThreshold="20"
+    >
+        <headerToolbar>
+            <OverflowToolbar>
+                <FacetFilter
+                    id="idFacetFilter"
+                    type="Simple"
+                    showPersonalization="false"
+                    liveSearch="false"
+                    showReset="true"
+                    reset="handleFacetFilterReset"
+                    confirm="handleConfirm"
+                    lists="{viewModel>/Filters}"
+                >
+                    <FacetFilterList
+                        title="{viewModel>type}"
+                        key="{viewModel>key}"
+                        multiSelect="false"
+                        items="{path:'viewModel>/Filters/0/values', templateShareable: true}"
+                    >
+                        <FacetFilterItem
+                            text="{viewModel>text}"
+                            key="{viewModel>key}"
+                            count="{viewModel>data}"
+                        />
+                    </FacetFilterList>
+                </FacetFilter>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column
+                hAlign="Center"
+                minScreenWidth="Tablet"
+                demandPopin="true"
+            >
+                <Text text="{i18n>SnsNo}" />
+            </Column>
+            <Column
+                hAlign="Center"
+                minScreenWidth="Tablet"
+                demandPopin="true"
+            >
+                <Text text="{i18n>CikisUY}" />
+            </Column>
+            <Column
+                hAlign="Center"
+                minScreenWidth="Tablet"
+                demandPopin="true"
+            >
+                <Text text="{i18n>DepoAdi}" />
+            </Column>
+            <Column
+                hAlign="Center"
+                minScreenWidth="Tablet"
+                demandPopin="true"
+            >
+                <Text text="{i18n>SevkTarihi}" />
+            </Column>
+            <Column
+                hAlign="Center"
+                minScreenWidth="Tablet"
+                demandPopin="true"
+            >
+                <Text text="{i18n>Ernam}" />
+            </Column>
+            <Column
+                hAlign="Center"
+                minScreenWidth="Tablet"
+                demandPopin="true"
+            >
+                <Text text="{i18n>Durum}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <ObjectNumber
+                        state="Error"
+                        number="{SnsNo}"
+                    />
+                    <ObjectNumber
+                        state="Error"
+                        number="{Reswk}"
+                    />
+                    <ObjectNumber
+                        state="Information"
+                        number="{DepoAdi}"
+                    />
+                    <ObjectNumber
+                        state="Success"
+                        number="{SevkTarihi}"
+                    />
+                    <ObjectNumber
+                        state="Information"
+                        number="{Ernam}"
+                    />
+                    <ObjectNumber
+                        state="Warning"
+                        number="{Durum}"
+                    />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
 </core:FragmentDefinition>

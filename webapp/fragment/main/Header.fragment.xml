@@ -20,6 +20,6 @@
 							count="{viewModel>data}" />
 				</FacetFilterList>
 		</FacetFilter>
-	
+
 	</VBox>
 </core:FragmentDefinition>

@@ -30,7 +30,7 @@ sap.ui.define([
     TextAreantroller) {
     "use strict";
 
-    return BaseController.extend("com.eren.stocktransfer.controller.ItemDetail", {
+    return BaseController.extend("com.eren.stocktrans.controller.ItemDetail", {
         /* =========================================================== */
         /* lifecycle methods                                           */
         /* =========================================================== */
