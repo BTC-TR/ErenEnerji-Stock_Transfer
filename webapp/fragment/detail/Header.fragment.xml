@@ -26,6 +26,7 @@
             valueHelpRequest="onValueHelpHlgort"
             maxLength="18"
             placeholder="{i18n>WareHouseAddress}"
+            liveChange="onHlgortInputLiveChange"
             change="onLgplaCheck"
             submit="onLgplaCheck"
             value="{viewModel>/Hlgort}"

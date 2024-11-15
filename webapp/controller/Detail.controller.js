@@ -121,12 +121,23 @@ sap.ui.define([
                 oEvent.getSource().setValue(sFilteredValue);
             }
         },
+
+        onHlgortInputLiveChange:function(oEvent){
+            var oInput = oEvent.getSource();
+            var sValue = oEvent.getParameter("value").toUpperCase();
+            oInput.setValue(sValue);
+        },
         onChangeBarcode: async function (event) {
             let value = event.getSource().getValue();
             let reslo = this.getModel("viewModel").getProperty("/SelectedObject/Reslo");
             let viewModel = this.getModel("viewModel");
             let successCallback = response => {
                 if (response.Type === "E") {
+                    viewModel.setProperty("/Barcode", "");
+                    viewModel.setProperty("/Charg", "");
+                    viewModel.setProperty("/Matnr", response.Matnr);
+                    viewModel.setProperty("/Maktx", response.Maktx);
+                    viewModel.setProperty("/Meins", response.Meins);
                     MessageBox.error(response.Message);
                 } else {
                     viewModel.setProperty("/Matnr", response.Matnr);
@@ -316,9 +327,9 @@ sap.ui.define([
             let oSnsNo = viewModel.getProperty("/SelectedObject/SnsNo"),
                 reswk = viewModel.getProperty("/SelectedObject/Reswk");
             if (parts.length === 2) {
-                matnr = parts[0];
+                charg = parts[1];
             }
-            charg = parts[1];
+            matnr = parts[0];
             if (parts[0].length >= 10 && !value.includes("|")) {
                 viewModel.setProperty("/Charg", value.substr(value.length - 10));
                 matnr = "";
