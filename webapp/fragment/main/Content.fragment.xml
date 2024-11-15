@@ -8,11 +8,7 @@
         mode="SingleSelectMaster"
         id="idTable"
         width="auto"
-        items="{
-        path: '/ListSet'
-    }"
-        growing="true"
-        growingThreshold="20"
+        items="{viewModel>/displayedData}"
     >
         <headerToolbar>
             <OverflowToolbar>
@@ -90,27 +86,27 @@
                 <cells>
                     <ObjectNumber
                         state="Error"
-                        number="{SnsNo}"
+                        number="{viewModel>SnsNo}"
                     />
                     <ObjectNumber
                         state="Error"
-                        number="{Reswk}"
+                        number="{viewModel>Reswk}"
                     />
                     <ObjectNumber
                         state="Information"
-                        number="{DepoAdi}"
+                        number="{viewModel>DepoAdi}"
                     />
                     <ObjectNumber
                         state="Success"
-                        number="{SevkTarihi}"
+                        number="{viewModel>SevkTarihi}"
                     />
                     <ObjectNumber
                         state="Information"
-                        number="{Ernam}"
+                        number="{viewModel>Ernam}"
                     />
                     <ObjectNumber
                         state="Warning"
-                        number="{Durum}"
+                        number="{viewModel>Durum}"
                     />
                 </cells>
             </ColumnListItem>

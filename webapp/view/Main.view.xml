@@ -13,7 +13,11 @@
 						<core:Fragment type="XML" fragmentName="com.eren.stocktrans.fragment.main.Content"/>
 					</ObjectPageSubSection>
 				</subSections>
+				
 			</ObjectPageSection>
 		</sections>
+		<footer>
+			<core:Fragment type="XML" fragmentName="com.eren.stocktrans.fragment.main.Footer"/>
+		</footer>
 	</ObjectPageLayout>
 </mvc:View>

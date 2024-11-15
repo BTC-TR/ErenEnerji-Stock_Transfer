@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<OverflowToolbar id="_IDGenOverflowToolbar1">
+         <ToolbarSpacer />
+        <Button text="Önceki" press="onPreviousPage" />
+        <Text text="Sayfa: {viewModel>/currentPage} ({viewModel>/start}-{viewModel>/end})" />
+        <Button text="Sonraki" press="onNextPage" />
+        <ToolbarSpacer />
+	</OverflowToolbar>
+</core:FragmentDefinition>
