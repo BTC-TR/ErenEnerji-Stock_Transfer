@@ -4,14 +4,16 @@ sap.ui.define(["./BaseController",
     "sap/ui/core/Element",
     'sap/ui/core/Fragment',
     'sap/ui/Device',
-    'sap/ui/model/Sorter'
+    'sap/ui/model/Sorter',
+    "../model/formatter",
 ], function (BaseController,
-	Filter,
-	FilterOperator,
-	Element,
-	Fragment,
-	Device,
-	Sorter) {
+    Filter,
+    FilterOperator,
+    Element,
+    Fragment,
+    Device,
+    Sorter,
+    formatter) {
     "use strict";
 
     return BaseController.extend("com.eren.stocktrans.controller.Main", {
@@ -23,7 +25,7 @@ sap.ui.define(["./BaseController",
          * Called when the worklist controller is instantiated.
          * @public
          */
-
+        formatter: formatter,
         onInit: function () {
             this.getRouter().getRoute("RouteMain").attachPatternMatched(this._onObjectMatched, this);
             this.currentPage = 1;
@@ -51,10 +53,10 @@ sap.ui.define(["./BaseController",
                 oTable = this.getView().byId("idTable");
             oTable.removeSelections(true);
 
-         
-            this.pageSize = 20;       
-            this.loadPageData();           
-            
+
+            this.pageSize = 20;
+            this.loadPageData();
+
 
         },
 
@@ -66,7 +68,7 @@ sap.ui.define(["./BaseController",
             //     arrayList.push(object);
             // });
             // if (this.getView().getModel("viewModel").getProperty("/List")) {
-                
+
             // } else {
             //     this.getView().getModel("viewModel").setProperty("/List", arrayList);
             // }
@@ -104,17 +106,18 @@ sap.ui.define(["./BaseController",
 
             oTable.getBinding("items").filter(oFilter);
 
-            let aAllData =  this.getView().getModel("viewModel").getProperty("/allData");
-			let aFilteredData = [];
-			if (oFilter.aFilters) {
-				 aFilteredData = aAllData.filter(item => {
-                return this._applyCustomFilter(oFilter, item);
-            });
-			}
-			
+            let aAllData = this.getView().getModel("viewModel").getProperty("/allData");
+            let aFilteredData = [];
+            if (oFilter.aFilters) {
+                aFilteredData = aAllData.filter(item => {
+                    return this._applyCustomFilter(oFilter, item);
+                });
+            }
+
             this.getView().getModel("viewModel").setProperty("/FilteredData", aFilteredData);
-			this.currentPage = 1;
-			this.updateTable();
+            this.currentPage = 1;
+            this.updateTable();
+            this._updateFilters();  
 
         },
 
@@ -154,7 +157,13 @@ sap.ui.define(["./BaseController",
                 var oFilter = new Filter(mFacetFilterLists.map(function (oList) {
                     return new Filter(oList.getSelectedItems().map(function (oItem) {
 
-                        return new Filter("Reswk", "EQ", oItem.getText());
+                        switch (oList.getTitle()) {
+                            case "Durum":
+                                return new Filter("Durum", "EQ", oItem.getText());
+                            case "Üretim Yeri":
+                                return new Filter("Reswk", "EQ", oItem.getText());
+                        }
+
                     }), false);
                 }), true);
                 this._applyFilter(oFilter);
@@ -165,15 +174,15 @@ sap.ui.define(["./BaseController",
 
 
         loadPageData: async function () {
-                let oViewModel = this.getModel("viewModel");
+            let oViewModel = this.getModel("viewModel");
 
-                let fnSuccess = (oData) => {
-                    //tüm datayı çek.
-                    oViewModel.setProperty("/allData", oData.results);
-                    oViewModel.setProperty("/totalCount", oData.results.length);
-                    this.allData = oData.results; // Tüm veriyi sakla
-                    this.updateTable();
-                },
+            let fnSuccess = (oData) => {
+                //tüm datayı çek.
+                oViewModel.setProperty("/allData", oData.results);
+                oViewModel.setProperty("/totalCount", oData.results.length);
+                this.allData = oData.results; // Tüm veriyi sakla
+                this.updateTable();
+            },
                 fnError = (err) => { },
                 fnFinally = () => {
                     oViewModel.setProperty("/busy", false);
@@ -183,7 +192,7 @@ sap.ui.define(["./BaseController",
                 .catch(fnError)
                 .finally(fnFinally);
 
-                this._updateFilters();
+            this._updateFilters();
 
         },
 
@@ -191,39 +200,39 @@ sap.ui.define(["./BaseController",
             const start = (this.currentPage - 1) * this.pageSize;
             const end = start + this.pageSize;
             const oTableModel = this.getView().getModel("viewModel");
-            let filteredData =  oTableModel.getProperty("/FilteredData");
+            let filteredData = oTableModel.getProperty("/FilteredData");
             let pageData = [];
-            
-            if(filteredData.length > 0){
+
+            if (filteredData.length > 0) {
                 pageData = filteredData.slice(start, end);
-            }else{
+            } else {
                 //eğer filtrelenmişse ekran, filtrenmiş data üzerinden slice yap
                 pageData = this.allData.slice(start, end);
             }
-            
-            oTableModel.setProperty("/displayedData", pageData);        
+
+            oTableModel.setProperty("/displayedData", pageData);
             this.getView().getModel("viewModel").setProperty("/currentPage", this.currentPage);
-            this.getView().getModel("viewModel").setProperty("/start", start+1);
+            this.getView().getModel("viewModel").setProperty("/start", start + 1);
             this.getView().getModel("viewModel").setProperty("/end", start + pageData.length);
         },
-        
+
 
         onNextPage: function () {
-            let viewModel =  this.getView().getModel("viewModel");
+            let viewModel = this.getView().getModel("viewModel");
             let totalCount = viewModel.getProperty("/totalCount"),
                 filteredData = viewModel.getProperty("/FilteredData")
             //eğer daha önce filtre kullanıldıysa, tüm data üzerinden değilde filtre üzreinden bir next olsun
-    
-            if(filteredData.length > 0){
+
+            if (filteredData.length > 0) {
                 totalCount = filteredData.length;
             }
-            
+
             if ((this.currentPage * this.pageSize) < totalCount) {
                 this.currentPage++;
                 this.updateTable();
             }
         },
-        
+
         onPreviousPage: function () {
             if (this.currentPage > 1) {
                 this.currentPage--;
@@ -243,10 +252,10 @@ sap.ui.define(["./BaseController",
                         fnResolve(oData);
                     },
                     error: function (oError) {
-                        fnReject(oError); 
+                        fnReject(oError);
                     }
                 };
-        
+
                 // Veriyi modelden oku
                 oModel.read(sPath, oParams);
             });
@@ -254,15 +263,20 @@ sap.ui.define(["./BaseController",
 
         _updateFilters: function () {
             let oViewModel = this.getView().getModel("viewModel");
-        
+
             // /tableListForFilter içerisindeki veriyi al
-            let tableData = oViewModel.getProperty("/allData");
-        
+            let tableData = oViewModel.getProperty("/allData"),
+                filteredData = oViewModel.getProperty("/FilteredData");
+
             if (!tableData) {
                 console.warn("Filter oluşturmak için veri bulunamadı.");
                 return;
             }
-        
+
+             if(filteredData.length > 0 ){
+                 tableData = filteredData;
+             }
+
             // Reswk değerlerini ve tekrar sayılarını hesapla
             const reswkCount = tableData.reduce((acc, item) => {
                 const reswk = item.Reswk;
@@ -271,49 +285,67 @@ sap.ui.define(["./BaseController",
                 }
                 return acc;
             }, {});
-        
+
+            const statCount = tableData.reduce((acc, item) => {
+                const Durum = item.Durum;
+                if (Durum) {
+                    acc[Durum] = (acc[Durum] || 0) + 1; // Reswk varsa sayacı artır
+                }
+                return acc;
+            }, {});
+
             // Yeni Filters array'i oluştur
             const Filters = {
                 type: "Üretim Yeri",
                 values: Object.entries(reswkCount).map(([text, data]) => ({
-                    text, // Reswk değeri
+                    text, // Reswk değeri,
                     data  // Reswk tekrar sayısı
                 }))
             };
-        
+
+            const Filter2 = {
+                type: "Durum",
+                values: Object.entries(statCount).map(([text, data]) => ({
+                    text,
+                    data
+                }))
+            };
+
             // Filters modeline yükle
-            oViewModel.setProperty("/Filters", [Filters]);
+            oViewModel.setProperty("/Filters", [Filters, Filter2]);
+            oViewModel.setProperty("/totalCount",tableData.length);
+
         },
         _applyCustomFilter: function (oFilter, item) {
             if (!oFilter) {
                 return true; // Eğer filtre yoksa, tüm öğeleri döndür
             }
-        
+
             if (oFilter.aFilters) {
                 // AND/OR için birden fazla filtre
                 return oFilter.aFilters.every(subFilter => this._applyCustomFilter(subFilter, item));
             }
-        
+
             const { sPath, sOperator, oValue1 } = oFilter;
-            const value = item[sPath]; 
-        
+            const value = item[sPath];
+
             switch (sOperator) {
-                case "EQ": 
+                case "EQ":
                     return value === oValue1;
-                case "NE": 
+                case "NE":
                     return value !== oValue1;
-                case "GT": 
+                case "GT":
                     return value > oValue1;
-                case "GE": 
+                case "GE":
                     return value >= oValue1;
-                case "LT": 
+                case "LT":
                     return value < oValue1;
-                case "LE": 
+                case "LE":
                     return value <= oValue1;
-                case "Contains": 
+                case "Contains":
                     return value && value.includes(oValue1);
                 default:
-                    return true; 
+                    return true;
             }
         }
     });

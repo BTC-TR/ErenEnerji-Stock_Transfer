@@ -16,10 +16,11 @@ builder:
         target:
           destination: ErenEnerji
           url: http://192.168.212.33:8000
+          client: 100
         app:
           name: ZEWM_STOCK_TRNS
           description: EWM Stock Transfer
           package: ZFIORI_EWM
-          transport: DS4K902544
+          transport: DS4K903245
         exclude:
           - /test/

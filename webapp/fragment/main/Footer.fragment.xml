@@ -1,9 +1,26 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<OverflowToolbar id="_IDGenOverflowToolbar1">
-         <ToolbarSpacer />
-        <Button text="Önceki" press="onPreviousPage" />
-        <Text text="Sayfa: {viewModel>/currentPage} ({viewModel>/start}-{viewModel>/end})" />
-        <Button text="Sonraki" press="onNextPage" />
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <OverflowToolbar id="_IDGenOverflowToolbar1">
         <ToolbarSpacer />
-	</OverflowToolbar>
+        <Button
+            text="Önceki"
+            press="onPreviousPage"
+            enabled="{ path: 'viewModel>/currentPage', formatter: '.formatter.visiblePrevious' }"
+        />
+        <ToolbarSeparator />
+        <Text text="Sayfa: {viewModel>/currentPage}" />
+        <ToolbarSeparator />
+        <Button
+            text="Sonraki"
+            press="onNextPage"
+            enabled="{ parts:[{
+            path: 'viewModel>/currentPage'
+            },
+            {path: 'viewModel>/totalCount'}] , formatter: '.formatter.visibleNext' }"
+        />
+        <ToolbarSeparator ></ToolbarSeparator>
+        <ToolbarSpacer />
+    </OverflowToolbar>
 </core:FragmentDefinition>

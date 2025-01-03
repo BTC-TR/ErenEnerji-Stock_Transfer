@@ -26,7 +26,7 @@
                         title="{viewModel>type}"
                         key="{viewModel>key}"
                         multiSelect="false"
-                        items="{path:'viewModel>/Filters/0/values', templateShareable: true}"
+                        items="{path:'viewModel>values', templateShareable: true}"
                     >
                         <FacetFilterItem
                             text="{viewModel>text}"
@@ -35,8 +35,16 @@
                         />
                     </FacetFilterList>
                 </FacetFilter>
+                <ToolbarSpacer />
             </OverflowToolbar>
         </headerToolbar>
+        <infoToolbar>
+			<OverflowToolbar>
+				<Label text="{     parts: [ { path: 'viewModel>/start' },
+                                 { path: 'viewModel>/end' } ],
+                    formatter: '.formatter.showedNumbers' }"/>
+			</OverflowToolbar>
+		</infoToolbar>
         <columns>
             <Column
                 hAlign="Center"
