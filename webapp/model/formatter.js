@@ -40,6 +40,20 @@ sap.ui.define([
                 });
             },
 
+            formatQuantityWithMeins: function (quantity, meins) {
+                if (!quantity) return "";
+            
+                // Eğer "ADT" veya "PC" ise, yalnızca tam sayı göster
+                if (meins === "ADT" || meins === "PC") {
+                    return `${parseInt(quantity, 10).toLocaleString('tr-TR')} ${meins}`;
+                }
+            
+                // Diğer durumlarda iki ondalık basamak göster
+                return `${parseFloat(quantity).toLocaleString('tr-TR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                })} ${meins}`;
+            },
             changeNumber: function (iNumber) {
                 return iNumber.replaceAll(".", "").replace(",", ".");
             },

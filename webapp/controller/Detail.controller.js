@@ -37,7 +37,7 @@ sap.ui.define([
             this.getRouter().getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
         },
         onValueHelpHlgort: function (event) {
-            
+
             let value = event.getSource().getValue();
             this.inputId = event.getSource().getId();
             if (!this._valueHelpKlgort) {
@@ -65,16 +65,25 @@ sap.ui.define([
                 viewModel.setProperty("/GenericHlgort", selectedItem.getTitle());
                 viewModel.setProperty("/Hlgort", selectedItem.getTitle());
                 viewModel.setProperty("/valueStateHlgort", "Success");
-               // this.getView().byId("_IDGenInput3").focus();
+                // this.getView().byId("_IDGenInput3").focus();
                 jQuery.sap.delayedCall(100, this, function () {
                     this.getView().byId("_IDGenInput3").focus();
                 });
             }
             event.getSource().getBinding("items").filter([]);
         },
-        onLgplaCheck: async function (event) {
+        onLgplaCheck: async function (event, manuelValue) {
             let viewModel = this.getModel("viewModel");
-            let value = event.getSource().getValue();
+
+            let value = "";
+            if(manuelValue){
+                value = manuelValue;
+                this.getView().byId("_IDGenInput1").setValue(value);
+                
+            }else{
+                value  = event.getSource().getValue();
+            }
+           
             let path = "/AddressControl";
             let service = this.getView().getModel("common_service");
             let method = "GET";
@@ -86,10 +95,10 @@ sap.ui.define([
                     viewModel.setProperty("/Hlgort", "");
                 } else {
                     viewModel.setProperty("/valueStateHlgort", "Success");
-                    jQuery.sap.delayedCall(100, this, function () {
+                    jQuery.sap.delayedCall(200, this, function () {
                         this.getView().byId("_IDGenInput3").focus();
                     });
-                  //  this.getView().byId("_IDGenInput3").focus();
+                    //  this.getView().byId("_IDGenInput3").focus();
                 }
             }).catch(error => {
                 // Handle error
@@ -97,32 +106,32 @@ sap.ui.define([
                 // Finalize
             });
         },
-        onQuantityLiveChange: function(oEvent) {
+        onQuantityLiveChange: function (oEvent) {
             let sValue = oEvent.getParameter("value");
 
             let oViewModel = this.getView().getModel("viewModel"),
                 sMeins = oViewModel.getProperty("/Meins"),
                 sFilteredValue;
-        
-                
-            if(sMeins === 'ADT' || sMeins === 'PC'){
-                  // Sadece sayıları kabul et (0-9)
-             sFilteredValue = sValue.replace(/[^0-9]/g, "");
+
+
+            if (sMeins === 'ADT' || sMeins === 'PC') {
+                // Sadece sayıları kabul et (0-9)
+                sFilteredValue = sValue.replace(/[^0-9]/g, "");
             }
-            else{
-            // Sayı ve yalnızca bir virgül dışında karakterleri temizle, ve sadece 1 tane virgül.
-            sFilteredValue = sValue.replace(/[^0-9,]/g, "");
-            sFilteredValue = sFilteredValue.replace(/(,.*),/g, "$1");
+            else {
+                // Sayı ve yalnızca bir virgül dışında karakterleri temizle, ve sadece 1 tane virgül.
+                sFilteredValue = sValue.replace(/[^0-9,]/g, "");
+                sFilteredValue = sFilteredValue.replace(/(,.*),/g, "$1");
             }
-                        
-        
+
+
             // Eğer girdi filtrelendi ise, değeri Input alanına geri yaz
             if (sValue !== sFilteredValue) {
                 oEvent.getSource().setValue(sFilteredValue);
             }
         },
 
-        onHlgortInputLiveChange:function(oEvent){
+        onHlgortInputLiveChange: function (oEvent) {
             var oInput = oEvent.getSource();
             var sValue = oEvent.getParameter("value").toUpperCase();
             oInput.setValue(sValue);
@@ -167,24 +176,24 @@ sap.ui.define([
         },
         onStockQuery: async function () {
             let oCrossAppNavigator = sap.ushell.Container.getService(
-              "CrossApplicationNavigation"
+                "CrossApplicationNavigation"
             ), // get a handle on the global XAppNav service
-              hash =
-                (oCrossAppNavigator &&
-                  oCrossAppNavigator.hrefForExternal({
-                    target: {
-                      semanticObject: "Material",
-                      action: "Query",
-                    },
-                  })) ||
-                ""; // generate the Hash to display a Supplier
+                hash =
+                    (oCrossAppNavigator &&
+                        oCrossAppNavigator.hrefForExternal({
+                            target: {
+                                semanticObject: "Material",
+                                action: "Query",
+                            },
+                        })) ||
+                    ""; // generate the Hash to display a Supplier
             oCrossAppNavigator.toExternal({
-              target: {
-                shellHash: hash,
-              },
+                target: {
+                    shellHash: hash,
+                },
             }); // navigate to Supplier application
-          },
-    
+        },
+
         onChangeQuantity: async function () {
             let oViewModel = this.getModel("viewModel");
             let oSnsNo = oViewModel.getProperty("/SelectedObject/SnsNo");
@@ -221,26 +230,26 @@ sap.ui.define([
             };
 
             if (oQuantity) {
-                   await this._addSnsItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, 
-                formatter.changeNumber(oQuantity), oLgnum).then(successCallback).catch(errorCallback).finally(finalizeCallback);
+                await this._addSnsItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse,
+                    formatter.changeNumber(oQuantity), oLgnum).then(successCallback).catch(errorCallback).finally(finalizeCallback);
             }
-            
-              },
+
+        },
         onClear: async function () {
             let viewModel = this.getModel("viewModel");
             sap.ui.getCore().getMessageManager().removeAllMessages();
-            viewModel.setProperty("/Hlgort", "");      
-            viewModel.setProperty("/valueStateHlgort","None");
+            viewModel.setProperty("/Hlgort", "");
+            viewModel.setProperty("/valueStateHlgort", "None");
             viewModel.setProperty("/Barcode", "");
             viewModel.setProperty("/Klgort", "");
             viewModel.setProperty("/Matnr", "");
-            viewModel.setProperty("/Maktx", "");        
+            viewModel.setProperty("/Maktx", "");
             viewModel.setProperty("/Charg", "");
             viewModel.setProperty("/Quantity", "");
             this.getView().byId("idQuantity").setValue("");
             viewModel.setProperty("/StockInfo", "");
             viewModel.setProperty("/Unit", "");
-            viewModel.setProperty("/Meins", "");         
+            viewModel.setProperty("/Meins", "");
             jQuery.sap.delayedCall(500, this, function () {
                 this.getView().byId("_IDGenInput1").focus();
             });
@@ -286,7 +295,7 @@ sap.ui.define([
 
         },
         onPressItem: async function (oEvent) {
-           let oObject = oEvent.getSource().getBindingContext("viewModel").getObject();
+            let oObject = oEvent.getSource().getBindingContext("viewModel").getObject();
             this.getRouter().navTo("itemDetail", {
                 SNS: oObject.SnsNo,
                 Kalem: oObject.Ebelp
@@ -367,17 +376,17 @@ sap.ui.define([
             });
         },
         _SNSDetail: async function () {
-            
+
             let oViewModel = this.getModel("viewModel"),
                 oSns = oViewModel.getProperty("/SelectedObject/SnsNo");
 
-                if(oSns === undefined){
-                    return this.getRouter().navTo("RouteMain", {});
-                }
+            if (oSns === undefined) {
+                return this.getRouter().navTo("RouteMain", {});
+            }
 
-                let fnSuccess = (oData) => {
-                    oViewModel.setProperty("/SnsList", oData.results);
-                },
+            let fnSuccess = (oData) => {
+                oViewModel.setProperty("/SnsList", oData.results);
+            },
                 fnError = (err) => { },
                 fnFinally = () => {
                     oViewModel.setProperty("/busy", false);
@@ -414,50 +423,50 @@ sap.ui.define([
         _confirmDelete: async function () {
 
             let oResourceBundle = this.getResourceBundle(),
-            oViewModel = this.getModel("viewModel");    
-           let oEntry =  this.getView().byId("idDetailTable").getSelectedItem().getBindingContext("viewModel").getObject() ;
+                oViewModel = this.getModel("viewModel");
+            let oEntry = this.getView().byId("idDetailTable").getSelectedItem().getBindingContext("viewModel").getObject();
             let oSnsNo = oEntry.SnsNo,
-             oEbelp =oEntry.Ebelp,
-             oMaterialType =  oEntry.Matnr,
-             oCharg = oEntry.SnsNo,
-             oWarehouse = oEntry.SnsNo,        
-             oLgnum =  oViewModel.getProperty("/Lgnum"),
-            fnSuccess = (oData) => {
-                sap.ui.core.BusyIndicator.hide();
-                if (oData.Type === "E") {
-                    MessageBox.error(oData.Message);
-                } else {
-                    MessageBox.success(oData.Message);
-                    history.go(-1);
-                }
-            },
-            fnError = (err) => {
-                sap.ui.core.BusyIndicator.hide();
-            },
-            fnFinally = () => {
-                oViewModel.setProperty("/busy", false);
-            };
-        this._deleteItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, oLgnum).then(fnSuccess).catch(fnError).finally(fnFinally);
+                oEbelp = oEntry.Ebelp,
+                oMaterialType = oEntry.Matnr,
+                oCharg = oEntry.SnsNo,
+                oWarehouse = oEntry.SnsNo,
+                oLgnum = oViewModel.getProperty("/Lgnum"),
+                fnSuccess = (oData) => {
+                    sap.ui.core.BusyIndicator.hide();
+                    if (oData.Type === "E") {
+                        MessageBox.error(oData.Message);
+                    } else {
+                        MessageBox.success(oData.Message);
+                        history.go(-1);
+                    }
+                },
+                fnError = (err) => {
+                    sap.ui.core.BusyIndicator.hide();
+                },
+                fnFinally = () => {
+                    oViewModel.setProperty("/busy", false);
+                };
+            this._deleteItem(oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, oLgnum).then(fnSuccess).catch(fnError).finally(fnFinally);
         },
         _deleteItem: async function (oSnsNo, oEbelp, oMaterialType, oCharg, oWarehouse, oLgnum) {
             let oViewModel = this.getModel("viewModel"),
-            oModel = this.getModel();
-        sap.ui.core.BusyIndicator.show(0);
-        return new Promise((fnResolve, fnReject) => {
-            let oParams = {
-                success: fnResolve,
-                error: fnReject,
-            },
-                sPath = oModel.createKey("/SnsDeleteSet", {
-                    IvCharg: oCharg,
-                    IvEbeln: oSnsNo,
-                    IvEbelp: oEbelp,
-                    IvLgpla: oWarehouse,
-                    IvLgnum: oLgnum,
-                    IvMatnr: oMaterialType
-                });
-            oModel.read(sPath, oParams);
-        });
+                oModel = this.getModel();
+            sap.ui.core.BusyIndicator.show(0);
+            return new Promise((fnResolve, fnReject) => {
+                let oParams = {
+                    success: fnResolve,
+                    error: fnReject,
+                },
+                    sPath = oModel.createKey("/SnsDeleteSet", {
+                        IvCharg: oCharg,
+                        IvEbeln: oSnsNo,
+                        IvEbelp: oEbelp,
+                        IvLgpla: oWarehouse,
+                        IvLgnum: oLgnum,
+                        IvMatnr: oMaterialType
+                    });
+                oModel.read(sPath, oParams);
+            });
         },
         _saveData: async function () {
             let oViewModel = this.getModel("viewModel"),
@@ -474,6 +483,109 @@ sap.ui.define([
                 oModel.read(sPath, oParams);
             });
         },
+
+        onPressMatnr: function (oEvent) {
+            let selectedItem = oEvent.getSource().getParent().getBindingContext("viewModel").getObject(),
+                IvEbeln = selectedItem.SnsNo,
+                IvEbelp = selectedItem.Ebelp,
+                IvMatnr = selectedItem.Matnr;
+
+
+            var aFilters = [
+                new Filter("IvEbeln", FilterOperator.EQ, IvEbeln),
+                new Filter("IvEbelp", FilterOperator.EQ, IvEbelp)
+            ];
+
+            sap.ui.core.BusyIndicator.show();
+            this.readMultiData("/WareHousesSet", aFilters, this.getView().getModel())
+            .then(function (oData) {
+                sap.ui.core.BusyIndicator.hide();
+                this._openSelectionFragment(oData.results);
+            }.bind(this))
+            .catch(function (oError) {
+                // Hata işlemleri
+                sap.ui.core.BusyIndicator.hide();
+            });
+
+
+        },
+
+        _openSelectionFragment: function (aData) {
+            // Dialog zaten varsa aç
+            if (this._oSelectDialog) {
+                this._setFragmentData(aData);
+                this._oSelectDialog.open();
+                return;
+            }
+        
+            // Dialog'u oluştur
+            this._oSelectDialog = new sap.m.Dialog({
+                title: "Adres Seçiniz",
+                content: [
+                    new sap.m.List({
+                        id : this.createId("dataList"),
+                        mode: "SingleSelectMaster",
+                        items: {
+                            path: "/data",
+                            template: new sap.m.StandardListItem({
+                                title: "{Lgpla}", 
+                                info: {
+                                    parts: [
+                                        { path: "Quan" }, // Miktar
+                                        { path: "Unit" }  // Birim
+                                    ],
+                                    formatter: this.formatter.formatQuantityWithMeins.bind(this)
+                                },
+                                infoState: "Success" 
+                            })
+                        }
+                    })
+                ],
+                beginButton: new sap.m.Button({
+                    text: "Seç",
+                    press: this.onSelect.bind(this)
+                }),
+                endButton: new sap.m.Button({
+                    text: "İptal",
+                    press: this.onClose.bind(this)
+                })
+            });
+        
+            // Model'i bağla ve göster
+            this.getView().addDependent(this._oSelectDialog);
+            this._setFragmentData(aData);
+            this._oSelectDialog.open();
+        },
+        
+        _setFragmentData: function (aData) {
+            // Dialog'a veri bağlama
+            var oModel = new sap.ui.model.json.JSONModel({ data: aData });
+            this._oSelectDialog.setModel(oModel);
+        },
+        
+        onSelect: function () {
+            // Seçilen öğeyi al
+            var oList = this.byId("dataList");
+            var oSelectedItem = oList.getSelectedItem();
+        
+            if (oSelectedItem) {
+                var oContext = oSelectedItem.getBindingContext();
+                var oData = oContext.getObject();
+                let selectedLgpla = oData.Lgpla;
+                this._oSelectDialog.close();
+                this.onLgplaCheck(null, selectedLgpla);
+            } else {
+                sap.m.MessageToast.show("Lütfen bir veri seçin.");
+            }
+        
+            // Dialog'u kapat
+           
+        },
+        
+        onClose: function () {
+            // Dialog'u kapat
+            this._oSelectDialog.close();
+        }
 
 
     });

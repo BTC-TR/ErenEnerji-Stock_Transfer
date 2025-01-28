@@ -97,6 +97,7 @@
                     id="_IDGenText6"
                     text="{i18n>Fark}"
                 />
+          
             </Column>
         </columns>
         <items>
@@ -110,10 +111,17 @@
                         id="_IDGenText9235"
                         text="{viewModel>Ebelp}"
                     />
-                    <Text
+                    <!-- <Text
                         id="_IDGenText235"
                         text="{viewModel>Matnr}"
-                    />
+                    /> -->
+                    <ObjectNumber
+				class="sapMObjectNumberLarge"
+				active="true"
+				inverted="true"
+				press="onPressMatnr"
+				number="{viewModel>Matnr}"  
+				state="Information" />
                     <Text
                         id="_IDGenText925"
                         text="{viewModel>Maktx}"
@@ -121,37 +129,36 @@
                     <Text text="{viewModel>Charg}" />
                     <Text
                         id="_IDGenText95"
-                           text= "{ path: 'viewModel>SipMiktar', type: 'sap.ui.model.type.Float',
+                        text="{ path: 'viewModel>SipMiktar', type: 'sap.ui.model.type.Float',
                      formatOptions: { 
                             minFractionDigits: 3,
                             maxFractionDigits: 3,
                             groupingEnabled: true,
                             groupingSeparator: '.',
                             decimalSeparator: ','
-                            } }" 
+                            } }"
                     />
                     <Text
                         id="_IDGenText75"
-
-                            text= "{ path: 'viewModel>TopMiktar', type: 'sap.ui.model.type.Float',
+                        text="{ path: 'viewModel>TopMiktar', type: 'sap.ui.model.type.Float',
                      formatOptions: { 
                             minFractionDigits: 3,
                             maxFractionDigits: 3,
                             groupingEnabled: true,
                             groupingSeparator: '.',
                             decimalSeparator: ','
-                            } }" 
+                            } }"
                     />
                     <Text
                         id="_IDGenText92795"
-                                text= "{ path: 'viewModel>FarkMiktar', type: 'sap.ui.model.type.Float',
+                        text="{ path: 'viewModel>FarkMiktar', type: 'sap.ui.model.type.Float',
                      formatOptions: { 
                             minFractionDigits: 3,
                             maxFractionDigits: 3,
                             groupingEnabled: true,
                             groupingSeparator: '.',
                             decimalSeparator: ','
-                            } }" 
+                            } }"
                     />
                 </cells>
             </ColumnListItem>
